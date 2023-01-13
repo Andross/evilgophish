@@ -77,6 +77,8 @@ function install_depends () {
     tar -C /usr/local -xzf "${v}".linux-amd64.tar.gz
     ln -sf /usr/local/go/bin/go /usr/bin/go
     rm "${v}".linux-amd64.tar.gz
+    export GOPATH=/usr/local/go
+    export PATH=$PATH:$GOPATH/bin
     print_good "Installed Go from source!"
 }
 
