@@ -61,7 +61,7 @@ function get_certs_path () {
     # certbot-auto --apache --domain ${root_domain}
     # read -r certs_path
     if [[ ${certs_path: -1} != "/" ]]; then
-        certs_path+="/evilgophish/certs"
+        certs_path+="/evilgophish/certs/"
     fi
 }
 
