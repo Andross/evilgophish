@@ -151,7 +151,7 @@ function setup_evilginx2 () {
     systemctl stop systemd-resolved
     # Build evilginx2
     cd evilginx2 || exit 1
-    go build
+    go build -buildvcs=false
     cd ..
     print_good "Configured evilginx2!"
 }
@@ -165,14 +165,14 @@ function setup_gophish () {
     if [[ $(echo "${feed_bool}" | grep -ci "true") -gt 0 ]]; then
         sed -i "s|\"feed_enabled\": false,|\"feed_enabled\": true,|g" gophish/config.json
         cd evilfeed || exit 1
-        go build
+        go build -buildvcs=false
         cd ..
         print_good "Live feed configured! cd into evilfeed then launch binary with ./evilfeed to start!"
     fi
     # Replace rid with user input
     find . -type f -exec sed -i "s|client_id|${rid_replacement}|g" {} \;
     cd gophish || exit 1
-    go build
+    go build -buildvcs=false
     cd ..
     print_good "Configured gophish!"
 }
