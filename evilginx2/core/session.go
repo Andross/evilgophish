@@ -17,6 +17,7 @@ type Session struct {
     IsAuthUrl     bool
     IsForwarded   bool
     RedirectCount int
+    NumRedirectErr int
     PhishLure     *Lure
     RId           string
     Browser       map[string]string
@@ -35,6 +36,7 @@ func NewSession(name string) (*Session, error) {
         IsAuthUrl:     false,
         IsForwarded:   false,
         RedirectCount: 0,
+        NumRedirectErr: 0,
         PhishLure:     nil,
     }
     s.Tokens = make(map[string]map[string]*database.Token)
